@@ -1,17 +1,156 @@
+import java.util.Scanner;
 public class MergeS {
 
+    Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
-        double size = 5; 
+        int size = 5; 
         int[] arr = new int[5];
-        arr[0] = 3;
-        arr[1] = 4;
-        arr[2] = 1;
-        arr[3] = 5;
-        arr[4] = 2;
+        arr[0] = input.nextInt;
+        arr[1] = input.nextInt;
+        arr[2] = input.nextInt;
+        arr[3] = input.nextInt;
+        arr[4] = input.nextInt;
+        int left = 0;
+        int right = 0;
+        if(size%2 == 0)
+            {
+                left = size/;
+                right = left;
+            } 
+            else
+            {
+                left = size/2;
+                right = left+1;
+            }
+            SplitRec(left, right, arr);
+
+
+
+
 
 
 
 
     }
+
+    public static void SplitRec(int left, int right, int[] arr) //If left is less than right than we have an odd case of elements
+    {
+
+       int[] lef = new arr[left];  //if(left < right)
+        int[] rig = new arr[right];
+       int i = 0;
+       boolean arrops = true;
+       while(arrops)
+       {
+
+        if(i >= left)
+        {
+            rig[i] = arr[i-left];
+        }
+        else
+            lef[i] = arr[i]; 
+
+        if(i >= arr.length) //was unsure if it would work correctly if it was equal to or greater than. So I did both
+        {
+            arrops = false;
+        }
+        i++;
+       }
+
+       if(left + right == 2 )
+       {
+        MergeRec(lef, rig);
+        return;
+       }
+
+
+
+       int ll = 0; //left's left
+       int lr = 0; //left's right
+       int rl = 0; //right's left
+       int rr = 0; //right's right
+
+       if(left % 2 == 0)
+       {
+        ll = left/2;
+        lr = left/2;
+       }
+       else
+       {
+        ll = left/2;
+        lr = ll+1;
+       }
+
+        if(right % 2 == 0)
+       {
+        rl = right/2;
+        rr = right/2;
+       }
+       else
+       {
+        rl = right/2;
+        rr = rl+1;
+       }
+
+       Splitrec(ll, lr, lef);
+       Splitrec(rl, rr, rig);
+       MergeRec(lef, rig)
+
+    }
+
+    public static int[] MergeRec(int[] left, int[] right)
+    {
+        int arrlen = left.length + right.length;
+        int[] arr = new arr[arrlen];
+        boolean arrops = true;
+        int i = 0;
+        int add = 0;
+        while(arrops)
+        {
+            if(i >= left.length)
+            {
+                add = right[i-left.length];
+                addsort(add, arr, i);
+            }
+            else
+            {
+                add = left[i];
+                addsort(add, arr, i);
+            }
+
+
+            if(i == arrlen)
+            {
+                arrops = false;
+            }
+            i++;
+        }
+
+    }
     
+    public static void addsort(int add; int[] arr, int i)
+    {
+        if(i == arr.length)
+        {
+            return;
+        }
+        else
+        {
+            for(int j=0; j<i; j++)
+            {
+                if(add < arr[j])
+                {
+                    arr[j+1] = arr[j];
+                    arr[j] = add;
+                    return;
+                }
+                if(j == i-1)
+                {
+                    arr[j+1] = add;
+                }
+            }
+        }
+    }
+
 }
