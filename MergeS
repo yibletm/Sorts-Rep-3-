@@ -1,0 +1,17 @@
+public class MergeS {
+
+    public static void main(String[] args) {
+        double size = 5; 
+        int[] arr = new int[5];
+        arr[0] = 3;
+        arr[1] = 4;
+        arr[2] = 1;
+        arr[3] = 5;
+        arr[4] = 2;
+
+
+
+
+    }
+    
+}
